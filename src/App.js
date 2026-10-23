@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import CourseLayout from './app/CourseLayout';
+import ExercisePage from './app/ExercisePage';
+import exercises from './app/exerciseCatalog';
 import './App.css';
 
-function App() {
+const firstExercisePath = `/exercises/${exercises[0].id}`;
+
+// App chỉ điều phối. Component, state và handler thuộc từng module bài tập.
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route element={<CourseLayout />}>
+        <Route index element={<Navigate to={firstExercisePath} replace />} />
+        {exercises.map((exercise) => (
+          <Route
+            key={exercise.id}
+            path={`exercises/${exercise.id}/*`}
+            element={<ExercisePage exercise={exercise} />}
+          />
+        ))}
+        <Route
+          path="*"
+          element={
+            <div className="example-card">
+              <h1>Không tìm thấy bài</h1>
+              <Link to={firstExercisePath}>Về bài {exercises[0].id}</Link>
+            </div>
+          }
+        />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;
