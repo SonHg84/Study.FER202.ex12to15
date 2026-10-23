@@ -20,8 +20,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "test:ci": "react-scripts test --watchAll=false --runInBand",
-    "format": "prettier --write \"src/**/*.{js,css,json,md}\" \"docs/*.md\" README.md package.json",
-    "format:check": "prettier --check \"src/**/*.{js,css,json,md}\" \"docs/*.md\" README.md package.json"
+    "format": "prettier --write \"src/**/*.{js,css,json}\" package.json",
+    "format:check": "prettier --check \"src/**/*.{js,css,json}\" package.json"
   },
   "eslintConfig": {
     "extends": [

@@ -24,10 +24,6 @@ export default function ExercisePage({ exercise }) {
             <li key={task}>{task}</li>
           ))}
         </ul>
-        <p>
-          Đọc <code>src/exercises/exercise-{exercise.id}/README.md</code>, rồi xem trang
-          chính và component con.
-        </p>
       </details>
       {/* Đổi bài sẽ unmount module cũ: effect và state không lẫn giữa các bài. */}
       <div className={`exercise-demo exercise-${exercise.id}`} key={exercise.id}>
